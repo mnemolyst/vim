@@ -2,7 +2,8 @@ set nocompatible
 set shiftwidth=4
 set tabstop=4
 set autoindent
-set noexpandtab
+set autoread
+set expandtab
 set foldmethod=indent
 set shell=/bin/bash
 set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
@@ -28,13 +29,14 @@ set hlsearch
 syntax on
 filetype plugin indent on
 
-helptags ~/.vim/bundle/vdebug/doc
+"helptags ~/.vim/bundle/vdebug/doc
+helptags ~/.vim/bundle/vim-fugitive/doc
 
-function! Vdebug_config( )
-	let g:vdebug_options['path_maps']      =  {'/home/vagrant': '/Users/joshuasalisbury/Projects/rsi'}
-	let g:vdebug_options['timeout']        =  60
-	let g:vdebug_options['break_on_open']  =  0
-endf
+"function! Vdebug_config( )
+	"let g:vdebug_options['path_maps']      =  {'/home/vagrant': '/Users/joshuasalisbury/Projects/rsi'}
+	"let g:vdebug_options['timeout']        =  60
+	"let g:vdebug_options['break_on_open']  =  0
+"endf
 
 function! Cp_filename( )
 	call setreg('*', getreg('%'))
@@ -86,6 +88,9 @@ endfunc
 
 let mapleader = ','
 nnoremap <leader>yf :call Cp_filename( )<CR>
+nnoremap <leader>ta :tab sp<CR>:cd app<CR>:Ack<CR>:cd ..<CR>
+nnoremap <leader>tb :tab sp<CR>:Ack<CR>
+nnoremap <leader>ad :q<CR>:q<CR>gT
 nnoremap <leader><space> :noh<cr>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -96,6 +101,6 @@ vnoremap / /\v
 
 execute pathogen#infect()
 
-let g:toggl_api_token="054b30bd2f4f42dca37bc1b962e5a029"
+"let g:toggl_api_token="054b30bd2f4f42dca37bc1b962e5a029"
 
-colorscheme morning
+colorscheme josh
